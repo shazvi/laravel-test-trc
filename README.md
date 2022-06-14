@@ -27,7 +27,7 @@ php artisan serve
 
 Open [http://localhost:8000](http://localhost:8000) in your browser to see the result.
 
-### Testing
+### Frontend testing
 
 - Rename `cypress.env.sample.json` to `cypress.env.json` and update its values to correspond to your dev environment.
 - Make sure the backend server is up, and then open cypress:
@@ -38,3 +38,9 @@ npm run cypress
 ```
 
 - In cypress's interactive tool, run the tests
+
+### Backend testing
+
+```bash
+php artisan test
+```

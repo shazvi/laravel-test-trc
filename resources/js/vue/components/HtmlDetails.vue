@@ -1,14 +1,16 @@
 <template>
     <div class="m-3">
         <div class="fw-bold">Description</div>
-        <div>{{ resource.description }}</div>
+        <pre>{{ resource.description }}</pre>
     </div>
 
     <div class="m-3">
-        <div class="fw-bold mb-2">HTML snippet</div>
+        <div class="fw-bold mb-2">
+            HTML snippet
+            <span class="btn btn-outline-dark btn-sm copy-clipboard-btn ms-2" title="Copy to clipboard" @click="copyHtml">{{ copyBtnText }}</span>
+        </div>
         <div class="code-block-container rounded border p-2">
-            <button class="btn btn-outline-dark btn-sm copy-clipboard-btn" title="Copy to clipboard" @click="copyHtml">{{ copyBtnText }}</button>
-            <pre>{{ resource.html }}</pre>
+            <pre class="mb-0">{{ resource.html }}</pre>
         </div>
     </div>
 </template>
