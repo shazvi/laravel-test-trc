@@ -4,7 +4,7 @@
             <div class="navbar-nav">
                 <router-link to="/" class="navbar-brand">TRC Resource Management</router-link>
                 <router-link to="/" class="nav-link" :class="{active: this.$route.name === 'home'}">Home</router-link>
-                <router-link v-if="isAdmin" to="/add" class="nav-link" :class="{active: this.$route.name === 'add'}">Add Resource</router-link>
+                <router-link v-if="isAdmin" to="/add" class="nav-link add-resource-link" :class="{active: this.$route.name === 'add'}">Add Resource</router-link>
             </div>
         </div>
     </nav>

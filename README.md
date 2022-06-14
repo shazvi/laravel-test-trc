@@ -19,9 +19,22 @@
 composer install
 npm install
 npm run dev
+php artisan key:generate
 php artisan migrate
 php artisan storage:link
 php artisan serve
 ```
 
 Open [http://localhost:8000](http://localhost:8000) in your browser to see the result.
+
+### Testing
+
+- Rename `cypress.env.sample.json` to `cypress.env.json` and update its values to correspond to your dev environment.
+- Make sure the backend server is up, and then open cypress:
+
+```bash
+npm run dev
+npm run cypress
+```
+
+- In cypress's interactive tool, run the tests

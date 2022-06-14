@@ -13,7 +13,7 @@
         </div>
 
         <template v-else>
-            <div class="col-3 ps-0">
+            <div class="col-3 px-0 border-end">
                 <ul class="list-group">
                     <li v-for="resource in data" :key="resource.id" class="list-group-item list-group-item-action text-start resource-list-item"
                         :class="{active: (selectedResource && selectedResource.id === resource.id)}" @click="selectedResource = resource">
@@ -29,13 +29,13 @@
 
                 <div v-else class="text-start">
                     <div class="row mb-5 pe-5">
-                        <div class="col-2"><button class="btn-close mt-4" @click="onCloseDetails" /></div>
+                        <div class="col-2"><button class="btn-close mt-4 details-close-btn" @click="onCloseDetails" /></div>
                         <div class="col-8 text-center"><h3 class="mt-3">Resource details</h3></div>
 
-                        <div v-if="isAdmin" class="m-3">
-                            <router-link :to="{name: 'edit', params: { id: selectedResource.id, resource: JSON.stringify(selectedResource) }}" class="btn btn-primary me-2">Edit
+                        <div v-if="isAdmin" class="m-3 resource-action-btns">
+                            <router-link :to="{name: 'edit', params: { id: selectedResource.id, resource: JSON.stringify(selectedResource) }}" class="btn btn-primary me-2 resource-edit-btn">Edit
                             </router-link>
-                            <button class="btn btn-danger mx-1" @click="deleteResource(selectedResource.id)" :disabled="deleting">
+                            <button class="btn btn-danger mx-1 resource-delete-btn" @click="deleteResource(selectedResource.id)" :disabled="deleting">
                                 <span v-if="deleting" class="spinner-border spinner-border-sm" role="status"></span>
                                 Delete
                             </button>

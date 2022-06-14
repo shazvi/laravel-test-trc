@@ -15,3 +15,4 @@ yarn-error.log
 /.idea
 /.vscode
 mix-manifest.json
+cypress.env.json

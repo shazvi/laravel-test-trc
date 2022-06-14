@@ -7,7 +7,7 @@
         </div>
 
         <div class="col-md-6">
-            <form @submit.prevent="addResource">
+            <form @submit.prevent="addResource" class="add-resource-form">
                 <div class="form-group mb-3">
                     <label for="title-field">Title</label>
                     <input id="title-field" type="text" class="form-control" :class="{ 'is-invalid': v$.resource.title.$errors.length > 0 }" placeholder="Title" v-model="resource.title" :disabled="saving">
