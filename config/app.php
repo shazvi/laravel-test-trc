@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel test TRC'),
+    'name' => env('APP_NAME', 'TRC Resource Management'),
 
     /*
     |--------------------------------------------------------------------------

@@ -13,9 +13,13 @@
         "axios": "^0.25",
         "laravel-mix": "^6.0.6",
         "lodash": "^4.17.19",
-        "postcss": "^8.1.14"
+        "postcss": "^8.1.14",
+        "vue-loader": "^16.8.3"
     },
     "dependencies": {
-        "vue": "^3.2.37"
+        "@vuelidate/core": "^2.0.0-alpha.41",
+        "@vuelidate/validators": "^2.0.0-alpha.29",
+        "vue": "^3.2.37",
+        "vue-router": "^4.0.16"
     }
 }

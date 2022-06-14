@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 
@@ -32,28 +33,37 @@ class Resource extends Model
     ];
 
     // Define relationship with sub-resources
-    public function html()
-    {
-        return $this->hasOne(Html::class);
+    public function html() { return $this->hasOne(Html::class); }
+    public function link() { return $this->hasOne(Link::class); }
+    public function pdf(){ return $this->hasOne(Pdf::class); }
+
+    public static function boot() {
+        parent::boot();
+
+        // before deleting resource, delete it's sub-resources
+        static::deleting(function($resource) {
+            $resource->html()->delete();
+            $resource->link()->delete();
+            $resource->pdf()->delete();
+        });
     }
 
-    public function link()
+    public static function getById(int $id)
     {
-        return $this->hasOne(Link::class);
+        return self::getJointTables()->find($id);
     }
 
-    public function pdf()
+    public static function getAll(): Collection
     {
-        return $this->hasOne(Pdf::class);
+        return self::getJointTables()->orderByDesc('created_at')->get();
     }
 
     /**
-     * Query resources from db with related sub-resources.
-     * Query builder is used instead of Eloquent methods because Eloquent uses multiple queries.
+     * Query builder is used instead of Eloquent methods because using Eloquent results in multiple queries.
      *
-     * @return Collection
+     * @return Builder
      */
-    public static function getAll(): Collection
+    private static function getJointTables(): Builder
     {
         return DB::table('resources')
             ->select(
@@ -74,7 +84,6 @@ class Resource extends Model
             {
                 $join->on('resources.id', '=', 'pdfs.resource_id')
                     ->where('resources.type', '=', self::TYPE_ID['PDF']);
-            })
-            ->get();
+            });
     }
 }

@@ -1,0 +1,19 @@
+body {
+    background-color: #f3f4f9;
+}
+
+.resource-list-type {
+    font-size: 0.9rem;
+}
+
+.resource-list-item {
+    cursor: pointer;
+}
+
+.list-group-item.active {
+    color: #fff;
+}
+
+.select-resource-text {
+    font-size: 1.2rem;
+}
